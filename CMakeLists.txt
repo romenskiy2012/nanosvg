@@ -7,6 +7,7 @@ configure_file(src/nanosvg.h ${CMAKE_CURRENT_BINARY_DIR}/nanosvg.c)
 configure_file(src/nanosvgrast.h ${CMAKE_CURRENT_BINARY_DIR}/nanosvgrast.c)
 
 add_library(nanosvg ${CMAKE_CURRENT_BINARY_DIR}/nanosvg.c)
+set_target_properties(nanosvg PROPERTIES SOVERSION 0 VERSION 0)
 
 find_library(MATH_LIBRARY m) # Business as usual
 if(MATH_LIBRARY)
@@ -21,6 +22,7 @@ add_library(nanosvgrast ${CMAKE_CURRENT_BINARY_DIR}/nanosvgrast.c)
 target_link_libraries(nanosvgrast PUBLIC nanosvg)
 target_include_directories(nanosvgrast PRIVATE src)
 target_compile_definitions(nanosvgrast PRIVATE NANOSVGRAST_IMPLEMENTATION)
+set_target_properties(nanosvgrast PROPERTIES SOVERSION 0 VERSION 0)
 
 # Installation and export:
 
